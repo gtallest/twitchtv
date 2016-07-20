@@ -1,1 +1,255 @@
-Hello World
+
+
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+
+
+    <title>CodePen - Twitchtv JSON API Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Miriam+Libre" rel="stylesheet">
+
+
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+
+        <style>
+      body {
+  background: #333;
+  font-family: 'Miriam Libre', sans-serif;
+  color:white;
+}
+
+#streamer-list {
+  margin-bottom:20px;
+}
+
+#credit {
+  font-size:12px;
+}
+#credit a,
+#credit a:hover{
+  text-decoration:none;
+  color:white;
+}
+
+h2 {
+  border-bottom:2px solid white;
+}
+
+#filters > div {
+  display:inline-block;
+  padding:5px;
+  margin:10px 20px;
+  cursor:pointer;
+  min-width:100px;
+}
+#filters > div:hover,
+.filter-active{
+  background: #ff3030;
+
+
+}
+
+.streamer {
+  padding:20px;
+}
+
+.online { background:rgba(37,171,28,0.35);
+transition:0.5s;
+}
+.online:hover { background:rgba(37,171,28,0.75);
+transition:0.5s;
+}
+.offline { background:rgba(137,11,28,0.35);
+transition:0.5s;
+}
+.offline:hover { background:rgba(137,11,28,0.75);
+transition:0.5s;
+}
+
+.streamer > div {
+  display:inline-block;
+}
+#streamer-list > div:nth-child(3) {
+  border-radius:10px 10px 0 0;
+}
+#streamer-list > div:last-child {
+  border-radius:0 0 10px 10px;
+}
+#streamer-list > div:nth-child(n+3){
+  border-bottom:2px solid rgba(255,255,255,0.1);
+}
+#streamer-list > div:last-child {
+  border-bottom:none;
+}
+
+.avatar {
+  width:10%;
+  margin-right:5%;
+}
+.avatar img {
+  height:50px;
+  border:2px solid rgba(255,255,255,0.25);
+}
+.username,
+.status {
+  width:40%;
+}
+.username a {
+  color:white;
+}
+.status {
+  vertical-align:middle;
+}
+    </style>
+
+
+
+
+  </head>
+
+  <body translate="no" >
+
+    <div class="container-fluid">
+
+  <h1 class="text-center">Twitchtv JSON API Project</h1>
+
+  <div class="row">
+
+    <div id="streamer-list" class="col-md-offset-2 col-md-8">
+      <h2>Twitch Streamers</h2>
+      <div id="filters" class="text-center">
+        <div id="all-filter">All</div><div id="online-filter">Online</div><div id="offline-filter">Offline</div>
+      </div>
+<!--      <div class="streamer online">
+        <div class="avatar">Photo</div><div class="username">Mega64Podcast</div><div class="status">Online</div></div>
+        <div class="streamer offline">
+            <div class="avatar">Photo</div><div class="username">EtikaWorldNetwork</div><div class="status">Offline</div></div>
+      <div class="streamer online">
+            <div class="avatar">Photo</div><div class="username">RogersBase</div><div class="status">Online</div></div>
+    </div>-->
+
+    </div>
+  </div>
+
+
+
+  <p id="credit" class="text-center">by <a href="http://marcdwong.com/">marc d. wong</a></p>
+
+</div>
+
+    <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js'></script>
+<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
+
+        <script>
+      var twitchStreams = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas","cashnastygaming","testytesty","brunofin","comster404","mega64podcast"];
+
+var streamArray = [];
+
+twitchStreams.forEach(function(user){
+  var stream = $.getJSON('https://api.twitch.tv/kraken/streams/' + user + '?callback=?');
+  var channel = $.getJSON('https://api.twitch.tv/kraken/channels/' + user + '?callback=?');
+
+  $.when(stream, channel).done(function(streamData, channelData){
+    var data = {};
+    if(channelData[0].display_name == null){
+      data.name = user;
+      var nameHTML = '<div class="username">' + data.name + '</div>';
+    }
+    else {
+      data.name = channelData[0].display_name;
+      var nameHTML = '<div class="username"><a href="https://www.twitch.tv/' + user + '" target="_blank">' + data.name + '</a></div>';
+    }
+    if(streamData[0].stream == null){
+      if(streamData[0].status == 422){
+        data.status = "Channel does not exist.";
+        data.online = 'offline';
+      }
+      else {
+        data.status = "Offline";
+        data.online = 'offline';
+      }
+
+    }
+    else {
+      data.status = streamData[0].stream.channel.status;
+      data.online = 'online';
+    }
+    if(channelData[0].logo == null){
+      data.logo = '';
+      var logoHTML = '';
+    }
+    else {
+      data.logo = channelData[0].logo;
+      var logoHTML = '<img src="' + data.logo + '">';
+    }
+
+
+    streamArray.push(data);
+
+    var streamerHTML = '<div class="streamer  ' + data.online + '"><div class="avatar">' + logoHTML + '</div>' + nameHTML + '<div class="status">' + data.status + '</div></div>';
+    $('#streamer-list')[0].insertAdjacentHTML('beforeend',streamerHTML);
+  });
+});
+
+
+
+//var apiURL = 'https://api.twitch.tv/kraken/streams?channel=' + commaSeparated + '&callback=?';
+/*
+twitchStreams.forEach(function(user){
+
+  $.getJSON('https://api.twitch.tv/kraken/channels/' + user + '?callback=?', function(data) {
+
+    if(data.error){
+
+      alert(data.message);
+    }
+    else {
+      console.log(data.logo);
+    }
+  });
+});
+
+
+var streams = $.getJSON(apiURL, function(data) {
+  var resultData = data;
+  var streams = resultData["streams"];
+  for(var i = 0; i < streams.length; i++){
+
+  }
+
+});
+*/
+
+
+$('#all-filter').on('click',function(){
+  $(this).addClass('filter-active');
+  $('#online-filter').removeClass('filter-active');
+   $('#offline-filter').removeClass('filter-active');
+  $('.online').show();
+  $('.offline').show();
+});
+$('#online-filter').on('click',function(){
+  $(this).addClass('filter-active');
+  $('#all-filter').removeClass('filter-active');
+   $('#offline-filter').removeClass('filter-active');
+  $('.online').show();
+  $('.offline').hide();
+});
+$('#offline-filter').on('click',function(){
+ $(this).addClass('filter-active');
+  $('#online-filter').removeClass('filter-active');
+  $('#all-filter').removeClass('filter-active');
+  $('.online').hide();
+  $('.offline').show();
+});
+      //# sourceURL=pen.js
+    </script>
+
+
+
+
+  </body>
+</html>
