@@ -1,0 +1,88 @@
+body {
+background: #333;
+font-family: 'Miriam Libre', sans-serif;
+color:white;
+}
+
+#streamer-list {
+margin-bottom:20px;
+}
+
+#credit {
+font-size:12px;
+}
+#credit a,
+#credit a:hover{
+text-decoration:none;
+color:white;
+}
+
+h2 {
+border-bottom:2px solid white;
+}
+
+#filters > div {
+display:inline-block;
+padding:5px;
+margin:10px 20px;
+cursor:pointer;
+min-width:100px;
+}
+#filters > div:hover,
+.filter-active{
+background: #ff3030;
+
+
+}
+
+.streamer {
+padding:20px;
+}
+
+.online { background:rgba(37,171,28,0.35);
+transition:0.5s;
+}
+.online:hover { background:rgba(37,171,28,0.75);
+transition:0.5s;
+}
+.offline { background:rgba(137,11,28,0.35);
+transition:0.5s;
+}
+.offline:hover { background:rgba(137,11,28,0.75);
+transition:0.5s;
+}
+
+.streamer > div {
+display:inline-block;
+}
+#streamer-list > div:nth-child(3) {
+border-radius:10px 10px 0 0;
+}
+#streamer-list > div:last-child {
+border-radius:0 0 10px 10px;
+}
+#streamer-list > div:nth-child(n+3){
+border-bottom:2px solid rgba(255,255,255,0.1);
+}
+#streamer-list > div:last-child {
+border-bottom:none;
+}
+
+.avatar {
+width:10%;
+margin-right:5%;
+}
+.avatar img {
+height:50px;
+border:2px solid rgba(255,255,255,0.25);
+}
+.username,
+.status {
+width:40%;
+}
+.username a {
+color:white;
+}
+.status {
+vertical-align:middle;
+}
