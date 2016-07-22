@@ -102,11 +102,14 @@ $('.online').hide();
 $('.offline').show();
 });
 $('#info-button').on('click',function(){
-  if($('#project-description').css('top') == "-350px"){
+  if($('#project-description').css('top') == "-365px"){
     $('#project-description').css('top','0');
+    $('#info-button').css({'background':'white','color':'#7f52d2','transform':'rotate(90deg)'});
   }
   else {
-    $('#project-description').css('top','-350px');
+    $('#project-description').css('top','-365px');
+    $('#info-button').css({'background':'#6441a5','color':'white','transform':'rotate(0deg)'});
+    $('#info-button:hover').css('background','#7f52d2;')
   }
 });
 
