@@ -39,7 +39,7 @@ var logoHTML = '';
 }
 else {
 data.logo = channelData[0].logo;
-var logoHTML = '<img src="' + data.logo + '">';
+var logoHTML = '<a href="https://www.twitch.tv/' + user + '" target="_blank"><img src="' + data.logo + '"></a>';
 }
 
 
@@ -100,6 +100,14 @@ $('#online-filter').removeClass('filter-active');
 $('#all-filter').removeClass('filter-active');
 $('.online').hide();
 $('.offline').show();
+});
+$('#info-button').on('click',function(){
+  if($('#project-description').css('top') == "-350px"){
+    $('#project-description').css('top','0');
+  }
+  else {
+    $('#project-description').css('top','-350px');
+  }
 });
 
 });

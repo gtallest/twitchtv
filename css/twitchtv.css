@@ -4,6 +4,51 @@ font-family: 'Miriam Libre', sans-serif;
 color:white;
 }
 
+#info-button {
+  position:fixed;
+  left:10px;
+  top: 10px;
+  border-radius:100%;
+  background:#6441a5;
+  width:35px;
+  height:35px;
+  text-align:center;
+  padding-top:8px;
+  cursor:pointer;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+  transition:1s;
+}
+#info-button:hover {
+  transform: rotate(360deg);
+  transition:1s;
+  background:#7f52d2;
+}
+
+#project-description {
+  position: fixed;
+  display: block;
+  width: 80%;
+  height: 300px;
+  margin: 0 auto;
+  background: #6441a5;
+  top: -350px;
+  left: 50%;
+  text-align: center;
+  transition: 2s;
+  transform: translate(-50%, 0);
+  z-index: 1;
+  border-radius: 0 0 20px 20px;
+  box-shadow:0px 10px 10px #000;
+}
+
+#twitch-logo {
+  margin-top:55px;
+}
+
+#twitch-logo img{
+  width:200px;
+}
+
 #streamer-list {
 margin-bottom:20px;
 }
@@ -16,9 +61,12 @@ font-size:12px;
 text-decoration:none;
 color:white;
 }
-
-h2 {
-border-bottom:2px solid white;
+h1 {
+  font-weight:bold;
+  font-size:38px;
+}
+h3 {
+border-bottom:1px dotted white;
 }
 
 #filters > div {
@@ -30,7 +78,7 @@ min-width:100px;
 }
 #filters > div:hover,
 .filter-active{
-background: #ff3030;
+background: #6441a5;
 
 
 }
