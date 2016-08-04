@@ -4,7 +4,7 @@ $(document).ready(function(){
 var twitchStreams = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas","cashnastygaming","testytesty","brunofin","comster404","mega64podcast"];
 
 //Ignore:
-//var streamArray = [];
+var streamArray = [];
 
 //For each stream in the Array
 twitchStreams.forEach(function(user){
@@ -57,7 +57,7 @@ $.when(stream, channel).done(function(streamData, channelData){
   }
 
   //Ignore:
-  //streamArray.push(data);
+  streamArray.push(data);
 
   //Create the HTML using user data for the current stream and add to stream list.
   var streamerHTML = '<div class="streamer  ' + data.online + '"><div class="avatar">' + logoHTML + '</div>' + nameHTML + '<div class="status">' + data.status + '</div></div>';

@@ -170,6 +170,22 @@ vertical-align:middle;
     top:-600px;
     width:80%;
   }
+  #filters > div {
+    margin:10px 5px !important;
+    min-width:80px !important;
+  }
+  .streamer {
+    padding:10px 5px !important;
+  }
+  .username {
+    margin-left:5% !important;
+    width:35% !important;
+    overflow-wrap:break-word;
+    vertical-align: middle;
+  }
+  .status {
+    margin-left:5% !important;
+  }
 }
 @media only screen and (max-width:340px) {
   #project-description {
