@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 //The Array of Twitch Streams
-var twitchStreams = ["ESL_SC2", "OgamingSC2", "mega64podcast", "rogersbase", "freecodecamp", "storbeck", "maximilian_dood", "kingoflightninggaming", "noobs2ninjas","cashnastygaming","testtest","brunofin","comster404"];
+var twitchStreams = ["ESL_SC2", "OgamingSC2", "mega64podcast", "rogersbase", "freecodecamp", "storbeck", "maximilian_dood", "kingoflightninggaming", "noobs2ninjas","cashnastygaming","testingapi","brunofin","comster404"];
 
 //Ignore:
 var streamArray = [];
