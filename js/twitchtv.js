@@ -31,7 +31,7 @@ $.when(stream, channel).done(function(streamData, channelData){
   //If the stream value is null, check status. If status is 422, then the stream was deleted / does not exist. Else the stream is offline.
   if(streamData[0].stream == null){
 
-    if(streamData[0].status == 422){
+    if(streamData[0].status == 422 || streamData[0].status == 404){
       data.status = "Channel does not exist.";
       data.online = 'offline';
     }
