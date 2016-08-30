@@ -1,0 +1,195 @@
+body {
+background: #333;
+font-family: 'Miriam Libre', sans-serif;
+color:white;
+}
+
+#info-button {
+  position:fixed;
+  left:10px;
+  top: 10px;
+  border-radius:100%;
+  background:#6441a5;
+  width:35px;
+  height:35px;
+  text-align:center;
+  padding-top:8px;
+  cursor:pointer;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+  transition:1s;
+  z-index:1;
+}
+#info-button:hover {
+/*  transform: rotate(360deg);*/
+  transition:1s;
+  background:#7f52d2;
+}
+
+#project-description {
+  position: fixed;
+  display: block;
+  width: 60%;
+  min-height: 300px;
+  margin: 0 auto;
+  background: #6441a5;
+  top: -365px;
+  left: 50%;
+  text-align: center;
+  transition: 2s;
+  transform: translate(-50%, 0);
+  z-index: 1;
+  border-radius: 0 0 20px 20px;
+  box-shadow:0px 10px 10px rgba(0,0,0,0.3);
+  padding:10px 30px;
+  border-bottom:3px solid #2f185a;
+  border-right:1px solid #2f185a;
+}
+#project-description ul,
+#project-description > p:nth-of-type(3),
+#project-description > p:nth-of-type(5) {
+  text-align:left;
+}
+
+#twitch-logo {
+  margin-top:55px;
+}
+
+#twitch-logo img{
+  width:200px;
+}
+
+#streamer-list {
+margin-bottom:20px;
+}
+
+#credit {
+font-size:12px;
+}
+#credit a,
+#credit a:hover{
+text-decoration:none;
+color:white;
+}
+h1 {
+  font-weight:bold;
+  font-size:38px;
+}
+h3 {
+border-bottom:1px dotted white;
+}
+h4 {
+  text-decoration:underline;
+}
+
+#filters > div {
+display:inline-block;
+padding:5px;
+margin:10px 20px;
+cursor:pointer;
+min-width:100px;
+}
+#filters > div:hover,
+.filter-active{
+background: #6441a5;
+
+
+}
+
+.streamer {
+padding:20px;
+}
+
+.online { background:rgba(37,171,28,0.35);
+transition:0.5s;
+}
+.online:hover { background:rgba(37,171,28,0.75);
+transition:0.5s;
+}
+.offline { background:rgba(137,11,28,0.35);
+transition:0.5s;
+}
+.offline:hover { background:rgba(137,11,28,0.75);
+transition:0.5s;
+}
+
+.streamer > div {
+display:inline-block;
+}
+#streamer-list > div:nth-child(3) {
+border-radius:10px 10px 0 0;
+}
+#streamer-list > div:last-child {
+border-radius:0 0 10px 10px;
+}
+#streamer-list > div:nth-child(n+3){
+border-bottom:2px solid rgba(255,255,255,0.1);
+}
+#streamer-list > div:last-child {
+border-bottom:none;
+}
+
+.avatar {
+width:10%;
+margin-right:5%;
+}
+.avatar img {
+height:50px;
+border:2px solid rgba(255,255,255,0.25);
+}
+.username,
+.status {
+width:40%;
+}
+.username a {
+color:white;
+}
+.status {
+vertical-align:middle;
+}
+
+/*Responsive*/
+@media only screen and (max-width:1100px) {
+  #project-description {
+    top:-450px;
+    width:70%;
+  }
+}
+@media only screen and (max-width:717px) {
+  #project-description {
+    top:-500px;
+  }
+}
+@media only screen and (max-width:623px) {
+  #project-description {
+    top:-500px;
+    width:80%;
+  }
+}
+@media only screen and (max-width:439px) {
+  #project-description {
+    top:-600px;
+    width:80%;
+  }
+  #filters > div {
+    margin:10px 5px !important;
+    min-width:80px !important;
+  }
+  .streamer {
+    padding:10px 5px !important;
+  }
+  .username {
+    margin-left:5% !important;
+    width:35% !important;
+    overflow-wrap:break-word;
+    vertical-align: middle;
+  }
+  .status {
+    margin-left:5% !important;
+  }
+}
+@media only screen and (max-width:340px) {
+  #project-description {
+    top:-650px;
+    width:80%;
+  }
+}
