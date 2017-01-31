@@ -10,8 +10,8 @@ var streamArray = [];
 twitchStreams.forEach(function(user){
 
 //Promises for stream data and channel data
-var stream = $.getJSON('https://api.twitch.tv/kraken/streams/' + user + '?callback=?');
-var channel = $.getJSON('https://api.twitch.tv/kraken/channels/' + user + '?callback=?');
+var stream = $.getJSON('https://api.twitch.tv/kraken/streams/' + user + '?client_id=k6ilt9ey9qmbbnokv0bkyrc4zevdry');
+var channel = $.getJSON('https://api.twitch.tv/kraken/channels/' + user + '?client_id=k6ilt9ey9qmbbnokv0bkyrc4zevdry');
 
 //Wait until both promises are complete, then assign data
 $.when(stream, channel).done(function(streamData, channelData){
